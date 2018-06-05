@@ -37,7 +37,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.collectionView?.reloadData()
     }
 
-    override  func collectionView(_ _collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     
 }
@@ -57,7 +57,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
 
 
 //MARK: Did select item at: performs a segue with selected meme
-   func collectionView(_collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 // Grab the DetailVC from Storyboard
         let memeDetailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
 //Populate view controller with data from the selected item
