@@ -29,6 +29,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             subscribeToKeyboardNotifications()
 //Enable buttons
             cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+            shareButton.isEnabled = imagePickerView.image != nil
           
         
             
@@ -46,6 +47,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             setTextFields(textField: topTextField, defaultText: "TOP")
             setTextFields(textField: bottomTextField, defaultText: "BOTTOM")
             shareButton.isEnabled = false
+        
         }
         
         func setTextFields(textField: UITextField, defaultText: String) {
@@ -74,6 +76,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imagePickerView.image = image
+               
+                
         }
             
 //Dismiss picker after choice is made
@@ -94,6 +98,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func generateMemedImage() -> UIImage {
 //HIDE NAV AND TOOL BAR
             navBarStatus(status: true)
+            
 // Render view to an image
             UIGraphicsBeginImageContext(self.view.frame.size)
             view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -101,6 +106,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             UIGraphicsEndImageContext()
 //SHOW NAV AND TOOL BAR
             navBarStatus(status: false)
+          
             
             return memedImage
         }
@@ -111,6 +117,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             let object = UIApplication.shared.delegate
             let appDelegate = object as! AppDelegate
             appDelegate.memes.append(meme)
+           
         
     }
         

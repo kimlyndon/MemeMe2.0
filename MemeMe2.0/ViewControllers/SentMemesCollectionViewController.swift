@@ -14,7 +14,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
 //Initializes meme array
-    let cellIdentifier = "MemeCollectionViewCell"
+    let cellIdentifier = "MemeCell"
     var memes: [Meme]!
 
     
@@ -45,7 +45,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
 //MARK: Cell for item at: populates cell with array data
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
    
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCell", for: indexPath) as! MemeCollectionViewCell
     let currentMeme = memes[indexPath.row]
     
 // Set the name and image
@@ -57,7 +57,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
 
 
 //MARK: Did select item at: performs a segue with selected meme
-   func collectionview(_collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   func collectionView(_collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 // Grab the DetailVC from Storyboard
         let memeDetailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
 //Populate view controller with data from the selected item
@@ -66,6 +66,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.navigationController!.pushViewController(memeDetailController, animated: true)
 
 }
+
 }
 
 
