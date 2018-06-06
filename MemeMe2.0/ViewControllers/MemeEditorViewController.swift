@@ -149,7 +149,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             
         }
         func textFieldDidBeginEditing(_ textField: UITextField) {
-            if textField.text == "TOP" || textField.text == "BOTTOM" {
+            if ["TOP", "BOTTOM"].contains(textField.text!) {
                 textField.text = ""
         }
     
@@ -158,11 +158,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
         
-            
-            if textField.isEqual(bottomTextField) {
-                self.unsubscribeFromKeyboardNotifications()
-        }
-            return true;
+            return true
         }
         
         func subscribeToKeyboardNotifications() {
